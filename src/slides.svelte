@@ -1,103 +1,16 @@
 <script lang="ts">
-	import { Presentation, Slide, Markdown, Code } from '@components'
-	import Vertical from '@lib/components/vertical.svelte'
+	import { Presentation, Slide, Code, Vertical} from '@components'
+
+	import Intro from './slides/intro.svelte'
+	import FinalSlide from './slides/final_slide.svelte'
 </script>
 
 <Presentation>
 
-	<Slide>
-		<p class="pb-6 font-mono text-gray-500">
-			Let's begin with some data structures to establish some context
-		</p>
-	</Slide>
-
-	<Slide>
-		<p class="text-[22px]">
-			<Code lang="c">
-			{`
-				// I made a Lot type like so:
-				typedef struct {
-					int type;
-					int quantity;
-					int life;
-					int reserved;
-					LotState state;
-				} Lot;
-			`}
-		</Code>
-		</p>
-		
-	</Slide>
-
-
+	<Intro />
 
 	<Vertical>
-		<Slide animate>	
-			<p class="text-[22px]">
-				<Code lang="c">
-				{`
-					// And a dynamic collection of Lot types like this:
-					typedef struct {
-						size_t size;
-						size_t cap;
-						Lot *items;
-					} LotCollection;
-				`}
-			</Code>
-			</p>	
-			
-		</Slide>
-
-		<Slide animate>		
-			<p class="text-[22px]">
-				<Code lang="c" lines="8-12">
-				{`
-					// A dynamic collection of Lot types like this:
-					typedef struct {
-						size_t size;
-						size_t cap;
-						Lot *items;
-					} LotCollection;
-
-					// and its relative init/add/delete/get methods:
-					void initCollection(LotCollection **collection_ptr);
-					void insertItem(LotCollection *collection, Lot item);
-					Lot  getItem(LotCollection *collection, int i);
-					void deleteItem(LotCollection *collection, int index);
-				`}
-			</Code>
-			</p>
-			
-		</Slide>
-
-		<Slide animate>	
-			<p class="text-[22px]">
-				<Code lang="c" lines="1-2">
-				{`
-					// also, the initial size of the collection is 8 Lots
-					#define INITIAL_SIZE 8
-
-					// A dynamic collection of Lot types like this:
-					typedef struct {
-						size_t size;
-						size_t cap;
-						Lot *items;
-					} LotCollection;
-
-					// and its relative init/add/delete/get methods:
-					void initCollection(LotCollection **collection_ptr);
-					void insertItem(LotCollection *collection, Lot item);
-					Lot  getItem(LotCollection *collection, int i);
-					void deleteItem(LotCollection *collection, int index);
-				`}
-			</Code>
-			</p>	
-			
-		</Slide>
-	</Vertical>
-
-	<Vertical>
-		<Slide animate>		
+		<Slide animate transition="fade">		
 			<p class="text-[22px]">
 				<Code lang="c">
 				{`
@@ -120,7 +33,7 @@
 			
 		</Slide>
 
-		<Slide animate>	
+		<Slide animate transition="fade">	
 			<p class="text-[22px]">
 				<Code lang="c" lines="5-7">
 				{`
@@ -144,12 +57,16 @@
 		</Slide>
 	</Vertical>
 
-	<Vertical>
-		<p class="text-gray-500">The interesting part begins now</p>
-	</Vertical>
+
+	
+
+		<Slide transition="fade">
+			<p class="text-gray-500">The interesting part begins now</p>
+		</Slide>
+	
 
 	<Vertical>
-		<Slide animate>	
+		<Slide animate transition="fade">	
 			<p class="text-[22px]">
 				<Code lang="c">
 				{`
@@ -173,7 +90,7 @@ void deleteItem(LotCollection *collection, int index) {
 			
 		</Slide>
 
-		<Slide animate>		
+		<Slide animate transition="fade">		
 			<p class="text-[22px]">
 				<Code lang="c" lines="9-13">
 				{`
@@ -200,7 +117,7 @@ void deleteItem(LotCollection *collection, int index) {
 		</Slide>
 	</Vertical>
 
-	<Slide>
+	<Slide transition="fade">
 		<p class="text-gray-500">
 			everytime you delete an item, every item after the deleted one is shifted from position 
 			<span class="font-mono text-white">i</span>
@@ -212,7 +129,7 @@ void deleteItem(LotCollection *collection, int index) {
 	</Slide>
 
 	<Vertical>
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c">
 {`
@@ -241,7 +158,7 @@ write(load.write, &empty, sizeof(Lot));
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="1">
 {`
@@ -269,7 +186,7 @@ write(load.write, &empty, sizeof(Lot));
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="3">
 {`
@@ -298,7 +215,7 @@ write(load.write, &empty, sizeof(Lot));
 		</Slide>
 
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="4">
 {`
@@ -326,7 +243,7 @@ write(load.write, &empty, sizeof(Lot));
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="7-9">
 {`
@@ -354,7 +271,7 @@ write(load.write, &empty, sizeof(Lot));
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="11">
 {`
@@ -382,7 +299,7 @@ write(load.write, &empty, sizeof(Lot));
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="13">
 {`
@@ -410,7 +327,7 @@ write(load.write, &empty, sizeof(Lot));
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="14">
 {`
@@ -438,7 +355,7 @@ write(load.write, &empty, sizeof(Lot));
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="16">
 {`
@@ -466,7 +383,7 @@ write(load.write, &empty, sizeof(Lot));
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="2">
 {`
@@ -494,7 +411,7 @@ write(load.write, &empty, sizeof(Lot));
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="19,20">
 {`
@@ -524,11 +441,11 @@ write(load.write, &empty, sizeof(Lot)); // once you've done sending the Lots, yo
 		</Slide>
 	</Vertical>
 
-	<Slide>
+	<Slide transition="fade">
 		<p class="text-gray-500 font-mono">What could possibly go wrong?</p>
 	</Slide>
 
-	<Slide>
+	<Slide transition="fade">
 		<p class="text-gray-500 font-mono text-start">
 			Well, for some reason, when asked, for example, 
 			a quantity of <span class="text-white">69 tons</span>, 
@@ -540,7 +457,7 @@ write(load.write, &empty, sizeof(Lot)); // once you've done sending the Lots, yo
 		</p>
 	</Slide>
 
-	<Slide>
+	<Slide transition="fade">
 		<p class="text-gray-500 font-mono text-start text-[22px] pb-6">
 			The key here was already hinted here, in the delete method of collection, remember?
 		</p>
@@ -568,13 +485,13 @@ void deleteItem(LotCollection *collection, int index) {
 	</Slide>
 
 	<Vertical>
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-gray-500 font-mono text-start text-[22px] pb-6">
 				let's now look again at the problem in the previous code:
 			</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-gray-500 font-mono text-start text-[22px] pb-6">
 				let's now look again at the problem in the previous code:
 			</p>
@@ -605,7 +522,7 @@ void deleteItem(LotCollection *collection, int index) {
 			</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-gray-500 font-mono text-start text-[22px] pb-6">
 				let's now look again at the problem in the previous code:
 			</p>
@@ -637,7 +554,7 @@ void deleteItem(LotCollection *collection, int index) {
 		</Slide>
 	</Vertical>
 
-	<Slide>
+	<Slide transition="fade">
 		<p class="text-gray-500 font-mono text-start text-[22px] pb-6 leading-8">
 			So by incrementing the index <span class="text-white">i++</span> in the for loop 
 			<span class="text-white">AND</span> deleting, we are the facto incrementing 
@@ -648,14 +565,14 @@ void deleteItem(LotCollection *collection, int index) {
 		</p>
 	</Slide>
 
-	<Slide>
+	<Slide transition="fade">
 		<p class="text-gray-500 font-mono">
 			If we look at the debugged code, the increment happens once regardless of the operation made
 		</p>
 	</Slide>
 
 	<Vertical>
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c">
 {`
@@ -682,7 +599,7 @@ while ((i < harbor.supply->size) && (to_load > 0)) {
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="2">
 {`
@@ -709,7 +626,7 @@ while ((i < harbor.supply->size) && (to_load > 0)) {
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="15-17">
 {`
@@ -736,7 +653,7 @@ while ((i < harbor.supply->size) && (to_load > 0)) {
 		</p>
 		</Slide>
 
-		<Slide animate>
+		<Slide animate transition="fade">
 			<p class="text-[22px]">
 			<Code lang="c" lines="11">
 {`
@@ -764,17 +681,8 @@ while ((i < harbor.supply->size) && (to_load > 0)) {
 		</Slide>
 	</Vertical>
 
-	<Slide>
-		<p class="text-gray-500 font-mono text-start text-[22px] pb-6 leading-8">
-			So in the end everything worked fine. That's it for the fancy presentation.
-			<br/><br/>PS.<br/>
-			I know that this would've been a trivial thing to debug with a debugger. But
-			not everything is as easily debuggable, especially in a multi-process world.
-			Here I obviously didn't have the chance to debug properly, so the problem 
-			persisted for so long &lpar;it took about a week or so&rpar;. no printf
-			shotgun method worked and only when I ported the sus logic into a toy project
-			could I find the problem and refactor the method.
-		</p>
-	</Slide>
 
+	
+	<FinalSlide />
+	
 </Presentation>
